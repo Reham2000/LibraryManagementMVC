@@ -1,0 +1,31 @@
+﻿@model List<Book>
+<h2>Books</h2>
+<a asp-controller="BookManagement" asp-action="Create">Create New Book</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            // C# code to retrieve the list of books from the model
+        }
+        @foreach(var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Category</td>
+                <td>@book.Price.ToString("C")</td>
+                <td>@book.Quentity</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
