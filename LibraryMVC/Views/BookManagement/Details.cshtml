@@ -1,0 +1,17 @@
+﻿@model Book
+
+<div class="card">
+    <div class="card-header">
+        @Model.Id  - @Model.Title
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Author</p>
+        <p class="card-text">@Model.Price</p>
+        <p class="card-text">@Model.Quentity</p>
+        <p class="card-text">@Model.Category</p>
+        <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+    </div>
+</div>

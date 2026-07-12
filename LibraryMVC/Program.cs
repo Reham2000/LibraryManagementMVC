@@ -1,4 +1,6 @@
 using LibraryMVC.Data;
+using LibraryMVC.Repossitories;
+using LibraryMVC.Repossitories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,9 @@ builder.Services.AddScoped<AppDbContext>();
 builder.Services.AddScoped<LibraryMVC.Services.BookServices>();
 //builder.Services.AddTransient<LibraryMVC.Services.BookServices>();
 //builder.Services.AddSingleton<LibraryMVC.Services.BookServices>();
+
+//builder.Services.AddScoped(typeof(IGenaricRepo<>), typeof(GenaricRepo<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 var app = builder.Build();

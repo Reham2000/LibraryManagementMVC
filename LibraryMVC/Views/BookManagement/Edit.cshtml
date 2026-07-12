@@ -1,0 +1,32 @@
+﻿@model Book
+
+<h2>Add New Book</h2>
+
+<form method="post" asp-action="Edit">
+    <div class="mb-3">
+        <label for="title" class="form-label">Book Title</label>
+        <input asp-for="Title" type="text" class="form-control" id="title" placeholder="Book Title">
+        <span class="text-danger" asp-validation-for="Title"></span>
+    </div>
+    <div class="mb-3">
+        <label for="author" class="form-label">Book Author</label>
+        <input asp-for="Author" type="text" class="form-control" id="author" placeholder="Book Author">
+        <span class="text-danger" asp-validation-for="Author"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Category" class="form-label">Book Category</label>
+        <input asp-for="Category" type="text" class="form-control" id="Category" placeholder="Book Category">
+        <span class="text-danger" asp-validation-for="Category"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Quentity" class="form-label">Book Quentity</label>
+        <input asp-for="Quentity" type="number" class="form-control" id="Quentity" placeholder="Book Quentity">
+        <span class="text-danger" asp-validation-for="Quentity"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Price" class="form-label">Book Price</label>
+        <input asp-for="Price" type="number" class="form-control" id="Price" placeholder="Book Price">
+        <span class="text-danger" asp-validation-for="Price"></span>
+    </div>
+    <input type="submit" name="name" value="Save" class="btn btn-outline-primary mt-3" />
+</form>

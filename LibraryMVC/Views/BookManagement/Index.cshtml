@@ -1,5 +1,10 @@
 ﻿@model List<Book>
 <h2>Books</h2>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info">@TempData["Message"]</div>
+}
+
 <a asp-controller="BookManagement" asp-action="Create">Create New Book</a>
 <table class="table table-bordered">
     <thead>
@@ -9,12 +14,15 @@
             <th>Category</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>PublishDate</th>
+            <th></th>
 
         </tr>
     </thead>
     <tbody>
         @{
             // C# code to retrieve the list of books from the model
+                // asp-route-Name
         }
         @foreach(var book in Model)
         {
@@ -24,6 +32,11 @@
                 <td>@book.Category</td>
                 <td>@book.Price.ToString("C")</td>
                 <td>@book.Quentity</td>
+                <td>@book.PublishDate</td>
+                <td>
+                    <a asp-controller="BookManagement" asp-action="Edit" asp-route-id="@book.Id">Edit</a> |
+                    <a asp-controller="BookManagement" asp-action="Details" asp-route-id="@book.Id">Delete</a> 
+                </td>
             </tr>
         }
 

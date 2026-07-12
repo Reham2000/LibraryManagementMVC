@@ -11,5 +11,21 @@ namespace LibraryMVC.Data
         }
 
         public DbSet<Book> Books { get; set; }
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // book and category one to many relationship
+            modelBuilder.Entity<Book>()
+                .HasOne(b => b.Category)
+                .WithMany(c => c.Books)
+                .HasForeignKey(b => b.CatId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+        }
     }
 }
