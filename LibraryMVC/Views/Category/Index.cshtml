@@ -1,0 +1,46 @@
+﻿@model BaseResponse<List<Category>>
+
+    <h2>Categories List</h2>
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["success"]
+    </div>
+
+}
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["error"]
+    </div>
+}
+    <a asp-action="Create" class="btn btn-outline-info my-3">Create new Category</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.Data.Any()){
+            @foreach(var category in Model.Data)
+        {
+            <tr>
+                <td>@category.Id</td>
+                <td>@category.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@category.Id" class="btn btn-outline-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@category.Id" class="btn btn-outline-warning">Details</a>
+                    <a asp-action="Details" asp-route-id="@category.Id" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+            }
+        }
+        else
+        {
+            <div class="alert alert-info "> No Categories Found</div>
+        }
+    </tbody>
+</table>

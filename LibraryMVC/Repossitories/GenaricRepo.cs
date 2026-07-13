@@ -42,7 +42,17 @@ namespace LibraryMVC.Repossitories
         {
             return _table.ToList();
         }
-
+        public List<T> GetAll(
+            params Expression<Func<T, object>>[] includes
+            )
+        {
+            IQueryable<T> query = _table;
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+            return query.ToList();
+        }
         public T? GetById(int id)
         {
             return _table.Find(id);

@@ -15,5 +15,8 @@ namespace LibraryMVC.Repossitories.Interfaces
         List<T> Find(
                 Expression<Func<T, bool>> condation
             );
+        List<T> GetAll(
+            params Expression<Func<T, object>>[] includes
+            );
     }
 }

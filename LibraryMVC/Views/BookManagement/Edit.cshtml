@@ -15,8 +15,11 @@
     </div>
     <div class="mb-3">
         <label for="Category" class="form-label">Book Category</label>
-        <input asp-for="Category" type="text" class="form-control" id="Category" placeholder="Book Category">
-        <span class="text-danger" asp-validation-for="Category"></span>
+        @* <input asp-for="Category" type="text" class="form-control" id="Category" placeholder="Book Category"> *@
+        <select asp-for="CatId" asp-items="ViewBag.Categories" class="form-select">
+            <option value="">Select Category</option>
+        </select>
+        <span class="text-danger" asp-validation-for="CatId"></span>
     </div>
     <div class="mb-3">
         <label for="Quentity" class="form-label">Book Quentity</label>

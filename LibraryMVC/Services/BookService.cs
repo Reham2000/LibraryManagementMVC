@@ -2,21 +2,22 @@
 using LibraryMVC.Models;
 using LibraryMVC.Repossitories;
 using LibraryMVC.Repossitories.Interfaces;
+using LibraryMVC.Services.Interfaces;
 
 namespace LibraryMVC.Services
 {
-    public class BookServices
+    public class BookService : IBookService
     {
         // logic for book services
         private readonly IUnitOfWork _unitOfWork;
-        public BookServices(IUnitOfWork unitOfWork)
+        public BookService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
         public List<Book> GetAll()
         {
             //return _context.Books.ToList();
-            return _unitOfWork.Books.GetAll();
+            return _unitOfWork.Books.GetAll(b => b.Category);
         }
         public bool Add(Book book)
         {
@@ -30,7 +31,7 @@ namespace LibraryMVC.Services
             var oldData = GetById(book.Id);
             oldData.Title = book.Title;
             oldData.Author = book.Author;
-            oldData.Category = book.Category;
+            oldData.CatId = book.CatId;
             oldData.Price = book.Price;
             oldData.Quentity = book.Quentity;
 
