@@ -1,9 +1,10 @@
 ﻿using LibraryMVC.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryMVC.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>        //DbContext  + Identity
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -11,6 +12,7 @@ namespace LibraryMVC.Data
         }
 
         public DbSet<Book> Books { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
 
 
